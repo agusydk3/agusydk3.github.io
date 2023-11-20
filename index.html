@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+  </head>
+
+  <body>
+    <form>
+      <table width="225" cellpadding="4">
+        <tr>
+          <td>Username</td>
+          <td><input type="text" id="username" /></td>
+        </tr>
+        <tr>
+          <td>Password</td>
+          <td><input type="password" id="password" /></td> 
+        </tr>
+        <tr>
+          <td colspan="2" align="right">
+            <input type="button" value="Login" onclick="login()" />
+          </td>
+        </tr>
+      </table>
+    </form>
+
+    <script>
+      function login() {
+        var user = document.getElementById('username').value;
+        var pass = document.getElementById('password').value;
+        
+        if (user == "admin" && pass == "123") {
+          alert("Anda Berhasil Login");
+        } else {
+          alert("Login Gagal");
+        }
+      }
+    </script>
+  </body>
+</html>
