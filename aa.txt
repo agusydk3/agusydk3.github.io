@@ -1,0 +1,370 @@
+## Dokumentasi Struktur Website E-sports (Laravel)
+
+**Nama Tim:** White Eagles (Berdasarkan contoh gambar)
+
+**Teknologi:**
+* **Backend:** Laravel (PHP Framework)
+* **Frontend:** Bootstrap (via CDN), Animate.css (via CDN), AOS (Animate On Scroll - via CDN)
+* **Database:** MySQL
+
+---
+
+### 1. Struktur Folder & File Laravel (Gambaran Umum)
+
+```
+white-eagles-website/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── Admin/
+│   │   │   │   ├── DashboardController.php
+│   │   │   │   ├── PlayerController.php
+│   │   │   │   ├── TournamentController.php
+│   │   │   │   ├── ... (controllers untuk manajemen konten)
+│   │   │   ├── Frontend/
+│   │   │   │   ├── HomeController.php
+│   │   │   │   ├── AboutUsController.php
+│   │   │   │   ├── RosterController.php
+│   │   │   │   ├── ... (controllers untuk halaman frontend)
+│   │   ├── Models/
+│   │   │   ├── User.php
+│   │   │   ├── Player.php
+│   │   │   ├── Tournament.php
+│   │   │   ├── MatchResult.php
+│   │   │   ├── Achievement.php
+│   │   │   ├── News.php
+│   │   │   ├── Schedule.php
+│   │   │   ├── Sponsor.php
+│   │   │   ├── Faq.php
+│   │   │   ├── ... (model lainnya)
+│   │   ├── Middleware/
+│   │   │   ├── AdminAuth.php (untuk otentikasi admin panel)
+│   ├── Providers/
+├── bootstrap/
+├── config/
+├── database/
+│   ├── migrations/
+│   │   ├── 2023_xx_xx_create_players_table.php
+│   │   ├── 2023_xx_xx_create_tournaments_table.php
+│   │   ├── ...
+├── public/
+│   ├── css/
+│   ├── js/
+│   ├── images/
+│   ├── favicons/
+├── resources/
+│   ├── views/
+│   │   ├── layouts/
+│   │   │   ├── app.blade.php (layout utama frontend)
+│   │   │   ├── admin.blade.php (layout utama admin panel)
+│   │   ├── frontend/
+│   │   │   ├── home.blade.php
+│   │   │   ├── about.blade.php
+│   │   │   ├── roster/
+│   │   │   │   ├── index.blade.php
+│   │   │   │   ├── show.blade.php (detail pemain)
+│   │   │   ├── tournament/
+│   │   │   │   ├── index.blade.php
+│   │   │   │   ├── show.blade.php (detail turnamen/match)
+│   │   │   ├── merchandise/
+│   │   │   │   ├── index.blade.php
+│   │   │   ├── media/
+│   │   │   │   ├── index.blade.php
+│   │   │   ├── contact.blade.php
+│   │   │   ├── schedule/
+│   │   │   │   ├── index.blade.php
+│   │   │   ├── news/
+│   │   │   │   ├── index.blade.php
+│   │   │   │   ├── show.blade.php
+│   │   │   ├── fanzone/
+│   │   │   │   ├── index.blade.php
+│   │   │   ├── partners/
+│   │   │   │   ├── index.blade.php
+│   │   │   ├── achievement-gallery/
+│   │   │   │   ├── index.blade.php
+│   │   │   ├── faq.blade.php
+│   │   ├── admin/
+│   │   │   ├── auth/
+│   │   │   │   ├── login.blade.php
+│   │   │   ├── dashboard.blade.php
+│   │   │   ├── players/
+│   │   │   │   ├── index.blade.php
+│   │   │   │   ├── create.blade.php
+│   │   │   │   ├── edit.blade.php
+│   │   │   ├── tournaments/
+│   │   │   ├── ... (view untuk manajemen konten admin)
+│   ├── lang/
+│   ├── sass/
+├── routes/
+│   ├── web.php (rute frontend)
+│   ├── admin.php (rute admin panel)
+├── storage/
+├── tests/
+├── .env
+├── composer.json
+├── package.json
+└── ...
+```
+
+---
+
+### 2. Struktur Halaman Website (Frontend)
+
+Berikut adalah detail struktur halaman website yang akan diimplementasikan, mencakup semua kebutuhan dan tambahan yang Anda minta.
+
+#### 2.1 Halaman Utama (Beranda)
+* **URL:** `/`
+* **Fungsi:**
+    * Ringkasan misi tim.
+    * Teaser prestasi tim (misal: "Juara bertahan di ABC Tournament!").
+    * Highlight berita terbaru (dari bagian Blog/News).
+    * Sekilas roster pemain utama.
+    * **Animasi:** Gunakan `animate.css` untuk elemen yang muncul saat scroll (`data-aos="fade-up"` dari AOS library). Contoh: Judul halaman, kartu pemain.
+    * **Hero Section:** Gambar atau video latar belakang yang menarik dengan CTA (Call to Action) seperti "Lihat Jadwal Pertandingan" atau "Dukung Kami".
+
+#### 2.2 Tentang Kami
+* **URL:** `/tentang-kami`
+* **Fungsi:**
+    * Sejarah White Eagles.
+    * Nilai-nilai tim (visi, misi).
+    * Struktur organisasi (founder, manager, coach) dengan profil singkat.
+    * **Animasi:** Efek `fade-in` atau `slide-up` untuk setiap section informasi.
+
+#### 2.3 Roster
+* **URL:** `/roster`
+* **Fungsi:**
+    * Daftar profil singkat pemain (nama, in-game name, role).
+    * Link ke detail profil masing-masing pemain.
+    * **Detail Pemain (URL: `/roster/{slug}`):**
+        * Foto profil pemain.
+        * Bio singkat.
+        * Role dan hero/karakter favorit.
+        * Statistik kunci (jika ada data yang bisa diintegrasikan).
+        * Link ke sosial media pribadi pemain.
+        * **Animasi:** Galeri foto pemain dengan efek hover atau modal untuk melihat detail lebih lanjut.
+
+#### 2.4 Prestasi & Turnamen
+* **URL:** `/prestasi-turnamen`
+* **Fungsi:**
+    * List turnamen yang pernah diikuti (nama turnamen, tanggal, status - aktif/selesai).
+    * Hasil match penting (win/lose, skor, lawan).
+    * Integrasi WSL (jika relevan dan ada API-nya).
+    * **Animasi:** Kartu turnamen bisa muncul dengan `fade-up` atau `zoom-in` saat di-scroll.
+
+#### 2.5 Merchandise / Store
+* **URL:** `/merchandise`
+* **Fungsi:**
+    * Tempat pre-order jersey / aksesoris.
+    * Deskripsi produk dan gambar.
+    * Tombol atau "Buy Now" Direct ke Whatsapp
+    * **Integrasi:** Link ke Linktree Anda atau platform e-commerce eksternal (misal: Tokopedia, Shopee) di setiap produk atau di bagian bawah halaman.
+    * **Animasi:** Efek hover pada gambar produk, modal untuk detail produk.
+
+#### 2.6 Media & Galeri
+* **URL:** `/media-galeri`
+* **Fungsi:**
+    * Galeri foto (event, behind the scene, sesi latihan).
+    * Video (highlight match, vlog tim, wawancara).
+    * Konten behind the scene.
+    * **Animasi:** Lightbox untuk foto dan video, galeri carousel.
+
+#### 2.7 Hubungi Kami
+* **URL:** `/hubungi-kami`
+* **Fungsi:**
+    * Form kontak (nama, email, subjek, pesan).
+    * Informasi email kontak tim.
+    * Link Discord/WhatsApp.
+    * Bagian khusus untuk sponsor (formulir/kontak email).
+    * **Animasi:** Form kontak dengan transisi saat input.
+
+#### 2.8 Schedule / Jadwal (Tambahan)
+* **URL:** `/jadwal`
+* **Fungsi:**
+    * Menampilkan jadwal turnamen mendatang, scrim, atau stream pemain.
+    * Format kalender interaktif atau list dengan countdown.
+    * **Animasi:** Countdown timer yang real-time, highlight jadwal yang sedang berlangsung.
+
+#### 2.9 Blog / News Update (Tambahan)
+* **URL:** `/berita` (indeks) & `/berita/{slug}` (detail)
+* **Fungsi:**
+    * Berisi berita internal, perubahan roster, strategi, atau opini pemain/coach.
+    * Daftar artikel dengan thumbnail dan ringkasan.
+    * Halaman detail artikel dengan konten lengkap, komentar (opsional).
+    * **SEO:** Menggunakan permalink yang ramah SEO (misal: `/berita/perubahan-roster-terbaru`).
+    * **Animasi:** Kartu berita yang muncul dengan `fade-in` atau `slide-up`.
+
+#### 2.10 Streaming Integration (Tambahan)
+* **URL:** `/live` (opsional, bisa juga di halaman Beranda atau Jadwal)
+* **Fungsi:**
+    * Embed live stream dari Twitch/YouTube saat match berlangsung.
+    * Bisa juga halaman khusus “Live Now” saat ada pertandingan.
+    * **Animasi:** Auto-play (dengan izin browser) atau tombol play yang jelas.
+
+#### 2.11 Fan Zone / Community (Tambahan)
+* **URL:** `/fan-zone`
+* **Fungsi:**
+    * Forum komentar (jika memungkinkan integrasi).
+    * Voting skin pilihan.
+    * Fanart submission (form upload sederhana).
+    * Shoutout dari fans (bisa ditampilkan dalam format carousel).
+    * Tombol dukung tim (link ke Saweria/Trakteer).
+    * **Animasi:** Interaktif dengan voting bar, carousel shoutout.
+
+#### 2.12 Partner / Sponsor Page (Tambahan)
+* **URL:** `/partner-sponsor`
+* **Fungsi:**
+    * Logo sponsor (dengan link ke website sponsor).
+    * Deskripsi kerja sama.
+    * Testimoni dari sponsor (jika ada).
+    * **Animasi:** Logo sponsor carousel atau grid dengan efek hover.
+
+#### 2.13 Achievement Gallery (Visual) (Tambahan)
+* **URL:** `/galeri-prestasi`
+* **Fungsi:**
+    * Bagian galeri khusus trophy, medali, dan piagam.
+    * Bisa infografik atau foto-foto berkualitas tinggi.
+    * Terpisah dari hasil match, fokus ke pencapaian nyata/medali.
+    * **Animasi:** Galeri gambar dengan efek zoom atau transisi saat navigasi.
+
+#### 2.14 FAQ Page (Tambahan)
+* **URL:** `/faq`
+* **Fungsi:**
+    * Daftar pertanyaan dan jawaban umum.
+    * Menggunakan format accordion untuk kemudahan navigasi.
+    * **Animasi:** Efek slide down/up pada accordion.
+
+#### 2.15 Mobile Optimization (Wajib)
+* **Penerapan:** Desain responsif menggunakan Bootstrap grid system, media queries.
+* **Fungsi:** Pastikan layout, gambar, dan teks terlihat baik di semua ukuran layar (HP, tablet, desktop).
+
+---
+
+### 3. Custom Admin Panel (Backend)
+
+Admin panel akan dibuat secara custom menggunakan Laravel, memungkinkan manajemen konten yang mudah dan terintegrasi.
+
+#### 3.1 Otentikasi & Otorisasi
+* Sistem login dan logout untuk admin.
+* Middleware untuk melindungi rute admin (hanya bisa diakses oleh user terotentikasi).
+* Role-based access control (opsional, jika ada level admin berbeda).
+
+#### 3.2 Dashboard
+* Ringkasan statistik website (jumlah pemain, turnamen aktif, artikel terbaru).
+* Link cepat ke halaman manajemen utama.
+
+#### 3.3 Manajemen Konten
+* **Manajemen Pemain:** CRUD (Create, Read, Update, Delete) profil pemain.
+* **Manajemen Turnamen & Match:** CRUD turnamen, menambahkan hasil match, detail turnamen.
+* **Manajemen Berita/Blog:** CRUD artikel berita, kategori, tags.
+* **Manajemen Merchandise:** CRUD produk, informasi pre-order.
+* **Manajemen Media & Galeri:** Upload dan pengelolaan foto/video.
+* **Manajemen Jadwal:** Menambahkan, mengedit, menghapus jadwal pertandingan/event.
+* **Manajemen FAQ:** CRUD pertanyaan dan jawaban.
+* **Manajemen Sponsor:** CRUD informasi sponsor.
+* **Manajemen Prestasi (Achievement Gallery):** Upload gambar trofi/medali dengan deskripsi.
+
+#### 3.4 Pengaturan Website
+* Pengaturan SEO (meta title, description, keywords default).
+* Pengaturan kontak (email, link Discord/WA).
+* Pengaturan Linktree untuk halaman store.
+
+---
+
+### 4. Implementasi SEO (Search Engine Optimization)
+
+* **URL Semantik:** Gunakan URL yang bersih dan deskriptif (contoh: `/berita/perubahan-roster-terbaru`, bukan `/berita?id=123`). Laravel sangat mendukung hal ini.
+* **Meta Tags:** Setiap halaman harus memiliki `meta title`, `meta description`, dan `meta keywords` yang unik dan relevan. Ini bisa dikelola di admin panel.
+* **Header Tags:** Gunakan tag `<h1>`, `<h2>`, `<h3>` secara hierarkis dan logis untuk struktur konten.
+* **Optimasi Gambar:** Gunakan `alt` tag deskriptif untuk semua gambar. Kompres gambar untuk loading lebih cepat.
+* **Konten Berkualitas:** Blog/News akan menjadi pilar utama SEO dengan konten yang relevan dan update.
+* **Sitemap XML:** Buat sitemap.xml otomatis (bisa pakai package Laravel) dan submit ke Google Search Console.
+* **Robots.txt:** Konfigurasi `robots.txt` untuk mengarahkan crawler mesin pencari.
+* **Mobile-First Indexing:** Pastikan website sangat responsif dan mobile-friendly, karena Google mengutamakan ini.
+* **Schema Markup (Structured Data):** Implementasikan Schema.org markup (misal: `Organization`, `Article`, `Event`) untuk membantu mesin pencari memahami konten Anda lebih baik dan meningkatkan tampilan di hasil pencarian.
+
+---
+
+### 5. Animasi & Interaktivitas (via CDN)
+
+Berikut beberapa ide untuk membuat website lebih menarik menggunakan CDN:
+
+* **Bootstrap CDN:**
+    ```html
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    ```
+* **Animate.css CDN:**
+    ```html
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    ```
+    * **Penggunaan:** Tambahkan kelas `animate__animated` dan kelas animasi spesifik (misal: `animate__fadeInUp`, `animate__bounce`) ke elemen HTML.
+    * **Contoh:** `<h1 class="animate__animated animate__fadeInDown">Selamat Datang di White Eagles!</h1>`
+
+* **AOS (Animate On Scroll) CDN:**
+    ```html
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    ```
+    * **Penggunaan:** Tambahkan atribut `data-aos` ke elemen HTML.
+    * **Contoh:** `<div data-aos="fade-up">Konten yang akan muncul saat discroll.</div>`
+
+* **Typed.js CDN (untuk efek ketikan teks):**
+    ```html
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        var typed = new Typed('#typed-text', {
+            strings: ['Tim E-sports Terbaik', 'Juara Bertahan', 'White Eagles'],
+            typeSpeed: 50,
+            backSpeed: 25,
+            loop: true
+        });
+    </script>
+    ```
+    * **Penggunaan:** `<span id="typed-text"></span>` pada bagian hero section atau slogan.
+
+* **Splide.js CDN (untuk carousel/slider):**
+    ```html
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script>
+        new Splide( '.splide' ).mount();
+    </script>
+    ```
+    * **Penggunaan:** Untuk galeri media, carousel sponsor, atau shoutout fans.
+
+* **Lightbox JS CDN (untuk galeri gambar/video):**
+    ```html
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
+    ```
+    * **Penggunaan:** Untuk galeri media dan achievement gallery.
+
+---
+
+### 6. Proses Pengembangan (Garis Besar)
+
+1.  **Setup Laravel:** Instal Laravel, konfigurasi database.
+2.  **Desain Database:** Buat migrasi untuk semua tabel yang dibutuhkan (players, tournaments, news, schedules, achievements, etc.).
+3.  **Buat Model:** Definisikan model Eloquent untuk setiap tabel.
+4.  **Admin Panel:**
+    * Buat sistem otentikasi (Laravel Breeze/Jetstream atau manual).
+    * Buat layout admin panel (bootstrap).
+    * Buat controller dan view untuk CRUD setiap entitas (pemain, turnamen, berita, dll.).
+    * Implementasikan middleware otentikasi.
+5.  **Frontend:**
+    * Buat layout frontend (bootstrap via CDN).
+    * Buat controller untuk setiap halaman frontend.
+    * Ambil data dari database dan tampilkan di view.
+    * Integrasikan Animate.css, AOS, dan animasi lainnya.
+6.  **SEO Implementation:** Pastikan semua meta tag, struktur URL, dan optimasi gambar diterapkan.
+7.  **Tambahan Fitur:** Implementasikan halaman Jadwal, Blog, Fan Zone, Partner, Achievement Gallery, FAQ, dan Streaming Integration.
+8.  **Responsive Design:** Uji dan optimalkan tampilan di berbagai perangkat.
+9.  **Testing:** Lakukan pengujian menyeluruh (unit test, feature test, user acceptance test).
+10. **Deployment:** Siapkan server dan deploy aplikasi Laravel.
+
+---
+
+Dokumentasi ini memberikan gambaran umum yang komprehensif. Setiap fitur tentu membutuhkan detail implementasi yang lebih dalam di tahap coding. Semoga ini menjadi panduan yang baik untuk memulai proyek website tim e-sports Anda!
