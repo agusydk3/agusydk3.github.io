@@ -156,7 +156,7 @@ Berikut adalah detail struktur halaman website yang akan diimplementasikan, menc
 * **Fungsi:**
     * Tempat pre-order jersey / aksesoris.
     * Deskripsi produk dan gambar.
-    * Tombol "Pre-order Now" atau "Buy Now".
+    * Tombol atau "Buy Now" Direct ke Whatsapp
     * **Integrasi:** Link ke Linktree Anda atau platform e-commerce eksternal (misal: Tokopedia, Shopee) di setiap produk atau di bagian bawah halaman.
     * **Animasi:** Efek hover pada gambar produk, modal untuk detail produk.
 
