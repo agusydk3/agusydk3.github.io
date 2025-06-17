@@ -1,0 +1,210 @@
+**Dokumentasi Struktur Website Tim E-sports (Laravel & Filament)**
+
+**Nama Tim:** White Eagles
+**Platform:** Laravel 10.x, Filament 3.3
+**Tujuan:** Website resmi tim e-sports untuk informasi tim, prestasi, berita, dan interaksi dengan penggemar.
+
+---
+
+### **A. Struktur Halaman Utama (Frontend)**
+
+Berikut adalah daftar halaman yang akan ada di website, sesuai dengan kebutuhan Anda dan penambahan yang disarankan:
+
+1.  **Beranda (`/`)**
+    * Ringkasan Misi Tim
+    * Teaser Prestasi Tim (Highlight terbaru/terbaik)
+    * Highlight News (Berita terbaru)
+    * Link Cepat ke Halaman Penting (Misal: Roster, Prestasi, Jadwal)
+    * **Tambahan:** Embed Live Stream (Jika ada pertandingan live)
+
+2.  **Tentang Kami (`/tentang-kami`)**
+    * Sejarah White Eagles
+    * Nilai Tim
+    * Struktur Organisasi (Founder, Manajer, Coach)
+    * Filosofi Tim
+
+3.  **Roster (`/roster`)**
+    * Daftar Tim Berdasarkan Game (Misal: PUBG Mobile, Valorant, Mobile Legends, eFootball)
+    * Profil Singkat Setiap Pemain (Nama In-Game, Nama Asli, Role, Game, Statistik Singkat, Foto)
+
+4.  **Prestasi & Turnamen (`/prestasi`)**
+    * **List Turnamen:** Daftar lengkap turnamen yang pernah diikuti.
+    * **WSL (Winning Streak/Loss Streak):** Mungkin maksudnya rekor pertandingan terkini.
+    * **Hasil Match:** Daftar hasil pertandingan terbaru/terpenting.
+    * **Tambahan:** Filters berdasarkan Game, Tahun, atau Tipe Turnamen.
+
+5.  **Merchandise (`/merchandise`)**
+    * Halaman Produk (Jersey, Aksesoris, dll.)
+    * Fitur Pre-order
+    * **Integrasi Linktree:** Cantumkan link ke marketplace atau platform penjualan merchandise Anda yang lain (misal: Tokopedia, Shopee, Linktree)
+
+6.  **Media & Galeri (`/media`)**
+    * Foto Tim (Latihan, Turnamen, Behind the Scene)
+    * Video (Highlight Match, Vlog Tim, Interview)
+    * Konten Behind the Scene
+
+7.  **Hubungi Kami (`/hubungi-kami`)**
+    * Form Kontak (Nama, Email, Pesan, Tipe Pesan: Sponsor/Umum/Media)
+    * Email Resmi Tim
+    * Link Discord Resmi Tim
+    * Link WhatsApp Resmi Tim
+
+8.  **FAQ (`/faq`) - Halaman Baru**
+    * Daftar pertanyaan umum dan jawabannya terkait tim, pertandingan, atau merchandise.
+    * Bisa dikategorikan.
+
+9.  **Schedule / Jadwal (`/jadwal`) - Halaman Baru**
+    * Menampilkan jadwal turnamen mendatang, scrim, atau stream pemain.
+    * Format kalender atau list dengan countdown.
+    * Bisa difilter berdasarkan game atau tanggal.
+
+10. **Blog / News Update (`/berita`) - Halaman Baru**
+    * Daftar artikel berita internal, perubahan roster, strategi, atau opini pemain/coach.
+    * Fitur pencarian dan kategori.
+    * Detail artikel dengan komentar (opsional).
+
+11. **Partner / Sponsor Page (`/partner`) - Halaman Baru**
+    * Logo sponsor.
+    * Deskripsi kerja sama.
+    * Testimoni dari sponsor (jika ada).
+
+12. **Achievement Gallery (Visual) (`/galeri-prestasi`) - Halaman Baru**
+    * Section galeri khusus trophy, medali, dan piagam.
+    * Bisa berupa infografik atau carousel gambar.
+    * Terpisah dari hasil match, fokus ke pencapaian nyata/medali.
+
+---
+
+### **B. Struktur Backend (Filament Admin Panel)**
+
+Filament akan digunakan untuk mengelola seluruh konten website secara mudah. Berikut adalah modul-modul yang bisa dibuat di Filament:
+
+1.  **Dashboard Utama**
+    * Ringkasan statistik website (jumlah pengunjung, berita terbaru, jadwal terdekat).
+
+2.  **Manajemen Beranda**
+    * Mengatur Misi Tim, Teaser Prestasi, Highlight News yang ditampilkan di halaman depan.
+
+3.  **Manajemen Tentang Kami**
+    * Mengedit Sejarah, Nilai Tim, dan Struktur Organisasi.
+
+4.  **Manajemen Roster**
+    * CRUD (Create, Read, Update, Delete) untuk Pemain (Nama In-Game, Nama Asli, Role, Game, Statistik, Foto Profil).
+    * CRUD untuk Tim/Divisi (Misal: Divisi PUBG Mobile, Divisi Valorant).
+
+5.  **Manajemen Prestasi & Turnamen**
+    * CRUD untuk Turnamen (Nama Turnamen, Game, Tanggal, Hasil, Ranking, Gambar Piala).
+    * CRUD untuk Match (Tim A, Tim B, Hasil, Tanggal, Link Replay).
+
+6.  **Manajemen Merchandise**
+    * CRUD untuk Produk Merchandise (Nama, Deskripsi, Harga, Gambar, Kategori).
+    * Pengaturan Linktree/Link Penjualan.
+
+7.  **Manajemen Media & Galeri**
+    * Upload dan pengelolaan Foto (Album, Kategori).
+    * Upload dan pengelolaan Video (Link YouTube/Embed Code, Judul, Deskripsi).
+
+8.  **Manajemen Pesan Kontak**
+    * Melihat pesan yang masuk dari Form Kontak.
+
+9.  **Manajemen FAQ**
+    * CRUD untuk Pertanyaan dan Jawaban FAQ.
+    * Pengaturan Kategori FAQ.
+
+10. **Manajemen Jadwal**
+    * CRUD untuk Event Jadwal (Nama Event, Tipe (Turnamen/Scrim/Stream), Game, Tanggal, Waktu, Lokasi/Link Streaming).
+
+11. **Manajemen Berita/Blog**
+    * CRUD untuk Artikel Berita (Judul, Konten, Gambar Thumbnail, Penulis, Kategori, Tag).
+    * Manajemen Kategori Berita.
+
+12. **Manajemen Partner/Sponsor**
+    * CRUD untuk Sponsor (Nama, Logo, Deskripsi, Link Website).
+
+13. **Manajemen Pengguna (Admin)**
+    * Mengelola user yang bisa mengakses Filament Admin Panel (hak akses, role).
+
+14. **Pengaturan SEO Global**
+    * Meta Title Default, Meta Description Default, Favicon.
+
+---
+
+### **C. Fitur & Penambahan Detail**
+
+1.  **SEO (Search Engine Optimization)**
+    * **On-page SEO:**
+        * **Meta Title & Description:** Setiap halaman harus memiliki meta title dan description yang unik dan relevan. Filament dapat dikonfigurasi untuk menambahkan kolom ini ke setiap resource (misal: untuk Berita, Pemain, Turnamen).
+        * **URL Friendly:** Gunakan URL yang bersih dan deskriptif (misal: `/berita/judul-berita-seo-friendly`).
+        * **Header Tags (H1, H2, H3):** Pastikan struktur heading digunakan dengan benar.
+        * **Image Alt Text:** Tambahkan alt text deskriptif untuk semua gambar.
+        * **Schema Markup (JSON-LD):** Pertimbangkan untuk menambahkan schema markup untuk entitas seperti `Organization`, `Event`, `Article`, `Person` (untuk profil pemain) agar lebih mudah dipahami oleh search engine.
+    * **XML Sitemap:** Generate sitemap otomatis (bisa pakai package Laravel seperti `spatie/laravel-sitemap`).
+    * **Robots.txt:** Konfigurasi untuk mengizinkan atau melarang crawler.
+    * **Kecepatan Website:** Optimalkan gambar, gunakan caching, dan pastikan kode efisien.
+
+2.  **FAQ Page**
+    * Desain yang interaktif, seperti accordion, agar mudah dinavigasi.
+    * Fitur pencarian dalam FAQ.
+
+3.  **Achievement Gallery (Visual)**
+    * Bagian terpisah untuk menonjolkan trofi, medali, dan piagam secara visual.
+    * Bisa berbentuk carousel, grid, atau infografik interaktif.
+
+4.  **Integrasi Linktree di Store/Merchandise**
+    * Pastikan ada tombol atau link yang jelas mengarahkan pengguna ke Linktree atau platform e-commerce eksternal lainnya.
+
+5.  **Halaman “Schedule / Jadwal”**
+    * **View:** Kalender interaktif (misal dengan FullCalendar.io) atau daftar kronologis.
+    * **Data:** Event (turnamen, scrim, stream) dengan tanggal, waktu, game, lawan, dan link streaming (jika ada).
+    * **Filament:** Admin panel untuk menambah/mengedit jadwal secara mudah.
+
+6.  **Blog / News Update**
+    * **Fitur:** Kategori, tag, pencarian, komentar (opsional, bisa integrasi Disqus), pagination.
+    * **Filament:** Editor teks kaya (Rich Text Editor) untuk menulis artikel.
+
+7.  **Streaming Integration**
+    * Di halaman Beranda atau halaman khusus "Live Now".
+    * Embed player dari Twitch atau YouTube.
+    * Logika untuk mendeteksi apakah ada stream yang sedang live.
+
+8.  **Fan Zone / Community (Opsional Lanjutan)**
+    * **Forum Komentar:** Bisa integrasi Disqus atau buat sistem komentar sederhana.
+    * **Voting:** Fitur polling sederhana (misal: skin pilihan).
+    * **Fanart Submission:** Form upload dan galeri fanart (perlu moderasi).
+    * **Tombol Dukung Tim:** Link ke platform donasi (Saweria, Trakteer, Patreon).
+
+9.  **Partner / Sponsor Page**
+    * Desain bersih dengan logo sponsor, deskripsi singkat, dan link ke website sponsor.
+
+10. **Mobile Optimization**
+    * **Responsive Design:** Menggunakan CSS Framework seperti Tailwind CSS atau Bootstrap untuk memastikan website tampil baik di semua ukuran layar (desktop, tablet, mobile).
+    * **Optimasi Gambar:** Kompresi gambar, lazy loading.
+    * **Performa:** Perhatikan Core Web Vitals untuk pengalaman mobile yang cepat.
+
+---
+
+### **D. Teknologi & Implementasi Rekomendasi**
+
+* **Framework PHP:** Laravel v10.48.29
+* **Admin Panel:** Filament 3.3
+* **Database:** MySQL
+* **Frontend Framework/CSS:**
+    * **Pilihan 1 (Disarankan):** Tailwind CSS untuk fleksibilitas dan kustomisasi.
+    * **Pilihan 2:** Bootstrap untuk pengembangan cepat.
+* **JavaScript:** Alpine.js (native Filament) atau React/Vue.js jika diperlukan interaktivitas kompleks di frontend.
+* **Media Library:** `spatie/laravel-medialibrary` untuk pengelolaan gambar dan file yang efisien.
+* **SEO Package:** `spatie/laravel-sitemap` untuk sitemap, `spatie/laravel-feed` untuk RSS feed (opsional).
+* **Deployment:** Git (GitHub/GitLab), CI/CD, Server (DigitalOcean, Vercel, AWS).
+
+---
+
+### **E. Tahapan Pengembangan (Ringkas)**
+
+1.  **Setup Proyek Laravel & Filament:** Instalasi dasar.
+2.  **Perancangan Database:** Buat migrasi untuk semua model data (Pemain, Turnamen, Berita, dll.).
+3.  **Pengembangan Filament Resources:** Buat resource untuk setiap modul admin (RosterResource, AchievementResource, NewsResource, dll.).
+4.  **Pengembangan Frontend (Blade/Livewire):** Buat view untuk setiap halaman (Beranda, Roster, Prestasi, dll.).
+5.  **Integrasi Fitur Tambahan:** SEO, FAQ, Jadwal, Blog, Streaming.
+6.  **Responsive Design:** Pastikan semua halaman tampil baik di mobile.
+7.  **Testing:** Uji fungsionalitas dan performa.
+8.  **Deployment:** Publikasikan website.
