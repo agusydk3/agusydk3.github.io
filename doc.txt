@@ -1,9 +1,3 @@
-Tentu, saya akan bantu membuatkan dokumentasi struktur website untuk tim e-sports Anda menggunakan Laravel, dengan tambahan fitur menarik dan fokus pada SEO.
-
-Berdasarkan gambar yang Anda berikan, saya akan mengintegrasikan semua kebutuhan dan saran yang Anda sebutkan.
-
----
-
 ## Dokumentasi Struktur Website E-sports (Laravel)
 
 **Nama Tim:** White Eagles (Berdasarkan contoh gambar)
