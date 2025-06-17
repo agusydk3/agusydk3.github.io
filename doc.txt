@@ -5,7 +5,7 @@
 **Teknologi:**
 * **Backend:** Laravel (PHP Framework)
 * **Frontend:** Bootstrap (via CDN), Animate.css (via CDN), AOS (Animate On Scroll - via CDN)
-* **Database:** MySQL/PostgreSQL (default Laravel)
+* **Database:** MySQL
 
 ---
 
